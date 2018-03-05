@@ -1,7 +1,11 @@
 package book;
 
+import book.biquguan.BookParserBiQuGuan;
+import book.biquguan.ChapterParserBiQuGuan;
 import book.txtjia.BookParserTxtJia;
 import book.txtjia.ChapterParserTxtJia;
+import book.xsla.BookParserXsLa;
+import book.xsla.ChapterParserXsLa;
 
 import java.io.FileWriter;
 import java.io.PrintWriter;
@@ -64,12 +68,24 @@ public class Download {
         if (bookHref.startsWith("https://www.txtjia.com")) {
             return new BookParserTxtJia();
         }
+        if (bookHref.startsWith("https://www.xs.la")) {
+            return new BookParserXsLa();
+        }
+        if(bookHref.startsWith("https://www.biquguan.com")){
+            return new BookParserBiQuGuan();
+        }
         return null;
     }
 
     protected ChapterParser getChapterParser() {
         if (bookHref.startsWith("https://www.txtjia.com")) {
             return new ChapterParserTxtJia();
+        }
+        if (bookHref.startsWith("https://www.xs.la")) {
+            return new ChapterParserXsLa();
+        }
+        if(bookHref.startsWith("https://www.biquguan.com")){
+            return new ChapterParserBiQuGuan();
         }
         return null;
     }

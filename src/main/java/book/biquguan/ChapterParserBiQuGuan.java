@@ -1,4 +1,4 @@
-package book.txtjia;
+package book.biquguan;
 
 import book.Chapter;
 import book.ChapterParser;
@@ -13,13 +13,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-public class ChapterParserTxtJia extends ChapterParser {
+public class ChapterParserBiQuGuan extends ChapterParser {
 
     public void parse(Chapter chapter, PrintWriter writer) throws IOException {
         System.out.println(chapter.getTitle());
+        writer.println(chapter.getTitle());
         String href = chapter.getHref();
         Document doc = connect(href);
-        Elements newsHeadlines = doc.select("#booktext");
+        Elements newsHeadlines = doc.select("#content");
         if (newsHeadlines.size() == 0) {
             return;
         }
