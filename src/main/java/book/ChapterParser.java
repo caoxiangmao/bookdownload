@@ -11,11 +11,17 @@ public abstract class ChapterParser {
 
     private static final int RETRY_TIMES = 3;
 
+    /**
+     * parse
+     * @param chapter
+     * @param writer
+     * @throws IOException
+     */
     public abstract void parse(Chapter chapter, PrintWriter writer) throws IOException;
 
     protected Document connect(String href) throws IOException {
         int count = 0;
-        while (count < 3) {
+        while (count < RETRY_TIMES) {
             try {
                 Document doc = Jsoup.connect(href).get();
                 count++;

@@ -14,6 +14,7 @@ import java.util.List;
 
 public class ChapterParserXxBiQuGe extends ChapterParser {
 
+    @Override
     public void parse(Chapter chapter, PrintWriter writer) throws IOException {
         System.out.println(chapter.getTitle());
         writer.println(chapter.getTitle());

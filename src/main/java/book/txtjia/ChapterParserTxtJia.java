@@ -15,6 +15,7 @@ import java.util.List;
 
 public class ChapterParserTxtJia extends ChapterParser {
 
+    @Override
     public void parse(Chapter chapter, PrintWriter writer) throws IOException {
         System.out.println(chapter.getTitle());
         String href = chapter.getHref();
