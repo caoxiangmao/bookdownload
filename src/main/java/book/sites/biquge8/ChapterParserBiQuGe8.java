@@ -17,7 +17,7 @@ public class ChapterParserBiQuGe8 extends ChapterParser {
     @Override
     public void parse(Chapter chapter, PrintWriter writer) throws IOException {
         System.out.println(chapter.getTitle());
-        //writer.println(chapter.getTitle());
+        writer.println(chapter.getTitle());
         String href = chapter.getHref();
         Document doc = connect(href);
         Elements newsHeadlines = doc.select("#content");
