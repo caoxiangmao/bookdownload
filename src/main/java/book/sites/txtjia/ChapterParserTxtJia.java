@@ -1,8 +1,7 @@
-package book.xsla;
+package book.sites.txtjia;
 
-import book.Chapter;
-import book.ChapterParser;
-import org.jsoup.Jsoup;
+import book.parser.Chapter;
+import book.parser.ChapterParser;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Node;
@@ -13,15 +12,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-public class ChapterParserXsLa extends ChapterParser {
+public class ChapterParserTxtJia extends ChapterParser {
 
     @Override
     public void parse(Chapter chapter, PrintWriter writer) throws IOException {
         System.out.println(chapter.getTitle());
-        writer.println(chapter.getTitle());
         String href = chapter.getHref();
         Document doc = connect(href);
-        Elements newsHeadlines = doc.select("#content");
+        Elements newsHeadlines = doc.select("#booktext");
         if (newsHeadlines.size() == 0) {
             return;
         }

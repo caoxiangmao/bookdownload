@@ -1,7 +1,7 @@
-package book.biquge8;
+package book.sites.biquge8;
 
-import book.Chapter;
-import book.ChapterParser;
+import book.parser.Chapter;
+import book.parser.ChapterParser;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Node;
@@ -12,12 +12,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-public class ChapterParserXxBiQuGe8 extends ChapterParser {
+public class ChapterParserBiQuGe8 extends ChapterParser {
 
     @Override
     public void parse(Chapter chapter, PrintWriter writer) throws IOException {
         System.out.println(chapter.getTitle());
-        writer.println(chapter.getTitle());
+        //writer.println(chapter.getTitle());
         String href = chapter.getHref();
         Document doc = connect(href);
         Elements newsHeadlines = doc.select("#content");

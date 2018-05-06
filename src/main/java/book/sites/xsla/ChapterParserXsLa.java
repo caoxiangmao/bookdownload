@@ -1,7 +1,7 @@
-package book.xxbiquge;
+package book.sites.xsla;
 
-import book.Chapter;
-import book.ChapterParser;
+import book.parser.Chapter;
+import book.parser.ChapterParser;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Node;
@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-public class ChapterParserXxBiQuGe extends ChapterParser {
+public class ChapterParserXsLa extends ChapterParser {
 
     @Override
     public void parse(Chapter chapter, PrintWriter writer) throws IOException {

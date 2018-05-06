@@ -1,8 +1,7 @@
-package book.biquguan;
+package book.sites.biquguan;
 
-import book.Chapter;
-import book.ChapterParser;
-import org.jsoup.Jsoup;
+import book.parser.Chapter;
+import book.parser.ChapterParser;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Node;

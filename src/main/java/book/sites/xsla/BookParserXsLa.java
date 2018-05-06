@@ -1,8 +1,8 @@
-package book.xsla;
+package book.sites.xsla;
 
-import book.Book;
-import book.BookParser;
-import book.Chapter;
+import book.parser.Book;
+import book.parser.BookParser;
+import book.parser.Chapter;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
