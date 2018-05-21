@@ -15,10 +15,23 @@ public class DownloadSubTask implements Runnable {
 
     private Site site;
 
+    private int chapterNum;
+
+    private volatile int chapterDoneNum;
+
     public DownloadSubTask(Site site, List<Chapter> chapterList, PrintWriter out) {
         this.chapterList = chapterList;
         this.out = out;
         this.site = site;
+        this.chapterNum = chapterList.size();
+    }
+
+    public int getChapterNum() {
+        return chapterNum;
+    }
+
+    public int getChapterDoneNum() {
+        return chapterDoneNum;
     }
 
     public void run() {
@@ -26,6 +39,7 @@ public class DownloadSubTask implements Runnable {
             for (Chapter chapter : chapterList) {
                 ChapterParser chapterParser = site.getChapterParser(chapter.getHref());
                 chapterParser.parse(chapter, out);
+                chapterDoneNum++;
             }
             out.close();
         } catch (Throwable t) {

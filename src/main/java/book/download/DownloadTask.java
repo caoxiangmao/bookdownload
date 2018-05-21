@@ -45,8 +45,8 @@ public class DownloadTask {
             if (site == null) {
                 throw new IllegalStateException(bookHref);
             }
-
-            List<Chapter> chapterList =filter( site.getBookParser(bookHref).parse(book));
+            List<DownloadSubTask> subTaskList = new ArrayList<DownloadSubTask>();
+            List<Chapter> chapterList = filter(site.getBookParser(bookHref).parse(book));
 
             System.out.println("ChapterList,num=" + chapterList.size());
             int pages = 3;
@@ -55,9 +55,14 @@ public class DownloadTask {
             for (int i = 0; i < pages; i++) {
                 List<Chapter> subList = chapterList.subList(pageSize * i, Math.min((i + 1) * pageSize, chapterList.size()));
                 DownloadSubTask subTask = new DownloadSubTask(site, subList, new PrintWriter((new FileWriter(dir + "/" + bookTitle + "_" + i + ".txt"))));
+                subTaskList.add(subTask);
                 threads[i] = new Thread(subTask);
                 threads[i].start();
             }
+
+            Thread monitorThread = new Thread(new MonitorTask(subTaskList));
+            monitorThread.setDaemon(true);
+            monitorThread.start();
 
             for (Thread thread : threads) {
                 thread.join();
@@ -73,7 +78,7 @@ public class DownloadTask {
     private List<Chapter> filter(List<Chapter> chapters) {
         for (int i = 0; i < chapters.size(); i++) {
             String title = chapters.get(i).getTitle().trim();
-            if (title.startsWith("001") || title.startsWith("第一章") || title.startsWith("第1章")|| title.startsWith("序章")) {
+            if (title.startsWith("001") || title.startsWith("第一章") || title.startsWith("第1章") || title.startsWith("序章")) {
                 return chapters.subList(i, chapters.size());
             }
         }
