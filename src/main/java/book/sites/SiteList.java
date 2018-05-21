@@ -1,6 +1,7 @@
 package book.sites;
 
 
+import book.sites.biquge.BiQuGe;
 import book.sites.biquge8.BiQuGe8;
 import book.sites.biquguan.BiQuGuan;
 import book.sites.txtjia.TxtJia;
@@ -17,6 +18,7 @@ public class SiteList {
     private static SiteList instance = new SiteList();
 
     private SiteList() {
+        sites.add(new BiQuGe());
         sites.add(new BiQuGe8());
         sites.add(new BiQuGuan());
         sites.add(new XsLa());
