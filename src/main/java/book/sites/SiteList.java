@@ -3,6 +3,7 @@ package book.sites;
 
 import book.sites.biquge.BiQuGe;
 import book.sites.biquge8.BiQuGe8;
+import book.sites.biqugex.BiQuGeX;
 import book.sites.biquguan.BiQuGuan;
 import book.sites.txtjia.TxtJia;
 import book.sites.xsla.XsLa;
@@ -20,6 +21,7 @@ public class SiteList {
     private SiteList() {
         sites.add(new BiQuGe());
         sites.add(new BiQuGe8());
+        sites.add(new BiQuGeX());
         sites.add(new BiQuGuan());
         sites.add(new XsLa());
         sites.add(new XxBiQuGe());
