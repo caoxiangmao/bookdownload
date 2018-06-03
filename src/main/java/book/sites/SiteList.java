@@ -8,6 +8,7 @@ import book.sites.biquguan.BiQuGuan;
 import book.sites.txtjia.TxtJia;
 import book.sites.xsla.XsLa;
 import book.sites.xxbiquge.XxBiQuGe;
+import book.sites.zw81.Zw81;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,7 @@ public class SiteList {
         sites.add(new XsLa());
         sites.add(new XxBiQuGe());
         sites.add(new TxtJia());
+        sites.add(new Zw81());
     }
 
     public Site getSite(String bookUrl) {
