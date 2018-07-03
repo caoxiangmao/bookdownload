@@ -1,7 +1,5 @@
-package book.sites.biquguan;
+package book.parser;
 
-import book.parser.Chapter;
-import book.parser.ChapterParser;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Node;
@@ -12,15 +10,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-public class ChapterParserBiQuGuan extends ChapterParser {
+public class ContentParserImpl2 extends ContentParser {
 
     @Override
     public void parse(Chapter chapter, PrintWriter writer) throws IOException {
         System.out.println(chapter.getTitle());
-        writer.println(chapter.getTitle());
         String href = chapter.getHref();
         Document doc = connect(href);
-        Elements newsHeadlines = doc.select("#content");
+        Elements newsHeadlines = doc.select("#booktext");
         if (newsHeadlines.size() == 0) {
             return;
         }
@@ -34,6 +31,16 @@ public class ChapterParserBiQuGuan extends ChapterParser {
                 }
                 writer.println(str.trim());
             }
+        }
+    }
+
+    public boolean canRead(Chapter chapter) throws IOException {
+        Document doc = connect(chapter.getHref());
+        Elements newsHeadlines = doc.select("#booktext");
+        if (newsHeadlines.size() > 0) {
+            return true;
+        } else {
+            return false;
         }
     }
 }

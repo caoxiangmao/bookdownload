@@ -1,7 +1,5 @@
-package book.sites.biqugex;
+package book.parser;
 
-import book.parser.Chapter;
-import book.parser.ChapterParser;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Node;
@@ -12,7 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-public class ChapterParserBiQuGeX extends ChapterParser {
+public class ContentParserImpl1 extends ContentParser {
 
     @Override
     public void parse(Chapter chapter, PrintWriter writer) throws IOException {
@@ -34,6 +32,16 @@ public class ChapterParserBiQuGeX extends ChapterParser {
                 }
                 writer.println(str.trim());
             }
+        }
+    }
+
+    public boolean canRead(Chapter chapter) throws IOException {
+        Document doc = connect(chapter.getHref());
+        Elements newsHeadlines = doc.select("#content");
+        if (newsHeadlines.size() > 0) {
+            return true;
+        } else {
+            return false;
         }
     }
 }

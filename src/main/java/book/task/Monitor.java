@@ -1,23 +1,18 @@
-package book.download;
+package book.task;
 
-import book.parser.Chapter;
-import book.parser.ChapterParser;
-import book.sites.Site;
-
-import java.io.PrintWriter;
 import java.util.List;
 
-public class MonitorTask implements Runnable {
+public class Monitor implements Runnable {
 
-    private List<DownloadSubTask> taskList;
+    private List<SubTask> taskList;
 
     private int total;
 
     private long start;
 
-    public MonitorTask(List<DownloadSubTask> taskList) {
+    public Monitor(List<SubTask> taskList) {
         this.taskList = taskList;
-        for (DownloadSubTask subTask : taskList) {
+        for (SubTask subTask : taskList) {
             total += subTask.getChapterNum();
         }
     }
@@ -28,7 +23,7 @@ public class MonitorTask implements Runnable {
             start = System.currentTimeMillis();
             while (true) {
                 int doneSum = 0;
-                for (DownloadSubTask subTask : taskList) {
+                for (SubTask subTask : taskList) {
                     doneSum += subTask.getChapterDoneNum();
                 }
                 long percent = Math.round(((double) doneSum * 100) / total);

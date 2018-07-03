@@ -1,28 +1,28 @@
-package book.download;
+package book.task;
 
 import book.parser.Chapter;
-import book.parser.ChapterParser;
+import book.parser.ContentParser;
 import book.sites.Site;
 
 import java.io.PrintWriter;
 import java.util.List;
 
-public class DownloadSubTask implements Runnable {
+public class SubTask implements Runnable {
 
     private List<Chapter> chapterList;
 
     private PrintWriter out;
 
-    private Site site;
+    private ContentParser parser;
 
     private int chapterNum;
 
     private volatile int chapterDoneNum;
 
-    public DownloadSubTask(Site site, List<Chapter> chapterList, PrintWriter out) {
+    public SubTask(ContentParser parser, List<Chapter> chapterList, PrintWriter out) {
         this.chapterList = chapterList;
         this.out = out;
-        this.site = site;
+        this.parser = parser;
         this.chapterNum = chapterList.size();
     }
 
@@ -37,8 +37,7 @@ public class DownloadSubTask implements Runnable {
     public void run() {
         try {
             for (Chapter chapter : chapterList) {
-                ChapterParser chapterParser = site.getChapterParser(chapter.getHref());
-                chapterParser.parse(chapter, out);
+                parser.parse(chapter, out);
                 chapterDoneNum++;
             }
             out.close();

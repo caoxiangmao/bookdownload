@@ -6,7 +6,7 @@ import org.jsoup.nodes.Document;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public abstract class ChapterParser {
+public abstract class ContentParser {
 
     private static final int RETRY_TIMES = 3;
 
@@ -18,6 +18,9 @@ public abstract class ChapterParser {
      * @throws IOException
      */
     public abstract void parse(Chapter chapter, PrintWriter writer) throws IOException;
+
+    public abstract boolean canRead(Chapter chapter) throws IOException;
+
 
     protected Document connect(String href) throws IOException {
         int count = 0;

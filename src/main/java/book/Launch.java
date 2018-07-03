@@ -1,14 +1,12 @@
 package book;
 
-import book.download.DownloadTask;
-
-import java.io.IOException;
+import book.task.Task;
 
 public class Launch {
 
     public static void main(String[] args) {
 
-        DownloadTask download = new DownloadTask("9074", "http://www.biquge8.com/9_9074/", "/Users/xxxx/Downloads");
+        Task download = new Task("4_4338", "http://www.biquge.com.tw/4_4338/", "/Users/caoxiangmao/Downloads");
         download.execute();
 
 
