@@ -28,6 +28,7 @@ public class Task {
         this.dir = dir;
         chapterListParserList.add(new ChapterListParserImpl1());
         chapterListParserList.add(new ChapterListParserImpl2());
+        chapterListParserList.add(new ChapterListParserImpl3());
         contentParserList.add(new ContentParserImpl1());
         contentParserList.add(new ContentParserImpl2());
     }

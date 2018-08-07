@@ -6,7 +6,7 @@ public class Launch {
 
     public static void main(String[] args) {
 
-        Task download = new Task("4_4338", "http://www.biquge.com.tw/4_4338/", "/Users/caoxiangmao/Downloads");
+        Task download = new Task("jueshizhuzai", "http://www.biqule.com/book_34747/", "/Users/caoxiangmao/Downloads");
         download.execute();
 
 
